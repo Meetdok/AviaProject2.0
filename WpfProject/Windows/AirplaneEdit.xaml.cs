@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WebProject.WebModels;
+using WpfProject.Tools;
+using WpfProject.ViewModels;
 
 namespace WpfProject.Windows
 {
@@ -19,14 +22,10 @@ namespace WpfProject.Windows
     /// </summary>
     public partial class AirplaneEdit : Window
     {
-        public AirplaneEdit()
+        public AirplaneEdit(Airplane airplane )
         {
             InitializeComponent();
-        }
-
-        private void SaveAirplane(object sender, RoutedEventArgs e)
-        {
-
-        }
+            DataContext = new ListAirplanesVM(airplane);
+        }              
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebProject.WebModels;
 using WpfProject.ViewModels;
 using WpfProject.Windows;
 
@@ -22,10 +23,10 @@ namespace WpfProject.Pages
     /// </summary>
     public partial class ListAirplanes : Page
     {
-        public ListAirplanes()
+        public ListAirplanes( )
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM();
+            DataContext = new ListAirplanesVM( null);
         }      
     }
 }

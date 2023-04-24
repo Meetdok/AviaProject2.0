@@ -25,7 +25,7 @@ namespace WpfProject.Windows
         public AirplaneAdd()
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM();
+            DataContext = new ListAirplanesVM(null);
         }
 
         private async void SaveAirplane(object sender, RoutedEventArgs e)

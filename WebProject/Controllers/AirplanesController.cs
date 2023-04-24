@@ -15,6 +15,7 @@ namespace WebProject.Controllers
     public class AirplanesController : ControllerBase
     {
         private readonly user05_1Context _context;
+        private int input;
 
         public AirplanesController(user05_1Context context)
         {
@@ -52,10 +53,11 @@ namespace WebProject.Controllers
 
         // PUT: api/Airplanes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAirplane(int id, Airplane airplane)
+        [HttpPost("put")]
+        public async Task<IActionResult> PutAirplane([FromBody]Airplane airplane)
         {
-            if (id != airplane.AirplanesId)
+            input = airplane.AirplanesId;
+            if (input != airplane.AirplanesId)
             {
                 return BadRequest();
             }
@@ -68,7 +70,7 @@ namespace WebProject.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AirplaneExists(id))
+                if (!AirplaneExists(input))
                 {
                     return NotFound();
                 }

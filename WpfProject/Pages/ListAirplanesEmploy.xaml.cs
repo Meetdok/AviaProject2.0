@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WebProject.WebModels;
 using WpfProject.ViewModels;
 using WpfProject.Windows;
 
@@ -22,26 +23,16 @@ namespace WpfProject.Pages
     /// </summary>
     public partial class ListAirplanesEmploy : Page
     {
-        public ListAirplanesEmploy()
+        public ListAirplanesEmploy(Airplane airplane)
         {
             InitializeComponent();
-            DataContext = new ListAirplanesVM();
+            DataContext = new ListAirplanesVM(airplane);
         }
-
-        private void EditAirplanes(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+       
         private void AddAirplane(object sender, RoutedEventArgs e)
         {
             AirplaneAdd a = new AirplaneAdd();
             a.Show();
-        }
-
-        private void DeleteAirplanes(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }       
     }
 }
