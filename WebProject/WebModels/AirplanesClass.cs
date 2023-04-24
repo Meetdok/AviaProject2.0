@@ -7,14 +7,15 @@ namespace WebProject.WebModels
     {
         public AirplanesClass()
         {
-            AirplaneClassFlights = new HashSet<AirplaneClassFlight>();
-            Airplanes = new HashSet<Airplane>();
+            AirplaneClassFlights = new List<AirplaneClassFlight>();
+            Airplanes = new List<Airplane>();
         }
 
         public int AirplaneClassId { get; set; }
         public string? ClassName { get; set; }
 
-        public virtual ICollection<AirplaneClassFlight> AirplaneClassFlights { get; set; }
-        public virtual ICollection<Airplane> Airplanes { get; set; }
+        public virtual List<AirplaneClassFlight> AirplaneClassFlights { get; set; }
+        public virtual List<Airplane> Airplanes { get; set; }
     }
+
 }

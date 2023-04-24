@@ -80,14 +80,14 @@ namespace WpfProject.ViewModels
 
             Task.Run(async () =>
             {
-                var json = await HttpApi.GetInstance().Post("Flights", "ListFlights", null);
-                Flight = HttpApi.GetInstance().Deserialize<List<Flight>>(json);
+                var json = await HttpApi.Post("Flights", "ListFlights", null);
+                Flight = HttpApi.Deserialize<List<Flight>>(json);
 
-                var json2 = await HttpApi.GetInstance().Post("Airplanes", "ListAirplanes", null);
-                Airplane = HttpApi.GetInstance().Deserialize<List<Airplane>>(json);
+                var json2 = await HttpApi.Post("Airplanes", "ListAirplanes", null);
+                Airplane = HttpApi.Deserialize<List<Airplane>>(json);
 
-                var json3 = await HttpApi.GetInstance().Post("FlightCompanys", "ListFlightCompanys", null);
-                FlightCompanie = HttpApi.GetInstance().Deserialize<List<FlightCompany>>(json);
+                var json3 = await HttpApi.Post("FlightCompanys", "ListFlightCompanys", null);
+                FlightCompanie = HttpApi.Deserialize<List<FlightCompany>>(json);
 
             });
 

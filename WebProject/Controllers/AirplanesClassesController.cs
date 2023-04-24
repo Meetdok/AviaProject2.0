@@ -30,6 +30,7 @@ namespace WebProject.Controllers
               return NotFound();
           }
             return await _context.AirplanesClasses.ToListAsync();
+
         }
 
         // GET: api/AirplanesClasses/5
@@ -97,7 +98,7 @@ namespace WebProject.Controllers
         }
 
         // DELETE: api/AirplanesClasses/5
-        [HttpDelete("{id}")]
+        [HttpPost("delete")]
         public async Task<IActionResult> DeleteAirplanesClass(int id)
         {
             if (_context.AirplanesClasses == null)

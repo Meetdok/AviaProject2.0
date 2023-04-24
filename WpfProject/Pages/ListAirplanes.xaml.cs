@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfProject.ViewModels;
+using WpfProject.Windows;
 
 namespace WpfProject.Pages
 {
@@ -25,6 +26,6 @@ namespace WpfProject.Pages
         {
             InitializeComponent();
             DataContext = new ListAirplanesVM();
-        }
+        }      
     }
 }

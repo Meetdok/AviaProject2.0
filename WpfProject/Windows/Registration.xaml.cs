@@ -36,7 +36,7 @@ namespace WpfProject.Windows
 
         private async void Register(object sender, RoutedEventArgs e)
         {
-            var json = await HttpApi.GetInstance().Post("Users", "SaveUser", new User
+            var json = await HttpApi.Post("Users", "SaveUser", new User
             {
                 FirstName = txt_Name.Text,
                 LastName = txt_LastName.Text,
@@ -47,7 +47,7 @@ namespace WpfProject.Windows
                 Password = txt_Password.Text,
                 PostId = 4
             });
-            User result = HttpApi.GetInstance().Deserialize<User>(json);
+            User result = HttpApi.Deserialize<User>(json);
 
             MessageBox.Show("Сохранилось!");
 

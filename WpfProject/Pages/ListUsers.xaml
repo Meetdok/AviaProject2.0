@@ -9,7 +9,7 @@
       Title="ListUsers">
 
     <Grid Background="White">
-        <ListView ItemsSource="{Binding User}" Margin="0,0,0,53">
+        <ListView ItemsSource="{Binding User}" SelectedItem="{Binding SelectedItem}" Margin="0,38,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}"/>
@@ -22,7 +22,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Left" Margin="0,402,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
-        <Button Content="Удалить" Click="DeleteUser" HorizontalAlignment="Left" Margin="98,402,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Редактировать" Click="EditUser" HorizontalAlignment="Left" Margin="345,0,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
+        <Button Content="Удалить" Command="{Binding DeleteUser}" HorizontalAlignment="Left" Margin="443,0,0,0" VerticalAlignment="Top" Height="38" Width="93"/>
     </Grid>
 </Page>

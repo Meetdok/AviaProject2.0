@@ -11,8 +11,10 @@ namespace WpfProject.ViewModels
 {
     public class ListAirplanesVM : BaseTools
     {
+        public Airplane SelectedItem { get; set; }
+        private List<AirplanesClass> airplanesClass;
         private List<Airplane> airplane;
-        private List<AirplanesClass> airplanesClasses;
+       
 
         public List<Airplane> Airplane
         {
@@ -25,27 +27,47 @@ namespace WpfProject.ViewModels
             }
         }
 
+
+
         public List<AirplanesClass> AirplanesClass
         {
-            get => airplanesClasses;
+            get => airplanesClass;
             set
             {
-                airplanesClasses = value;
+                airplanesClass = value;
 
                 Signal();
             }
         }
 
+        public CommandVM DeleteAirplane { get; set; }
+       
+
         public ListAirplanesVM()
         {
             Task.Run(async () =>
             {
-                var json = await HttpApi.GetInstance().Post("Airplanes", "ListAirplanes", null);
-                Airplane = HttpApi.GetInstance().Deserialize<List<Airplane>>(json);
+                var json = await HttpApi.Post("Airplanes", "ListAirplanes", null);
+                Airplane = HttpApi.Deserialize<List<Airplane>>(json);
 
-                var json2 = await HttpApi.GetInstance().Post("AirplanesClasses", "ListAirplanesClasses", null);
-                AirplanesClass = HttpApi.GetInstance().Deserialize<List<AirplanesClass>>(json);
+                var json2 = await HttpApi.Post("AirplanesClasses", "ListAirplanesClasses", null);
+                AirplanesClass = HttpApi.Deserialize<List<AirplanesClass>>(json2);
             });
+
+            DeleteAirplane = new CommandVM(async () =>
+            {
+                var json = await HttpApi.Post("Airplanes", "delete", SelectedItem.AirplanesId);
+
+                Task.Run(async () =>
+                {
+                    var json = await HttpApi.Post("Airplanes", "ListAirplanes", null);
+                    Airplane = HttpApi.Deserialize<List<Airplane>>(json);
+
+                    var json2 = await HttpApi.Post("AirplanesClasses", "ListAirplanesClasses", null);
+                    AirplanesClass = HttpApi.Deserialize<List<AirplanesClass>>(json);
+                });
+            });
+
         }
     }
 }

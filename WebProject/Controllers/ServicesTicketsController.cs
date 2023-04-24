@@ -97,8 +97,8 @@ namespace WebProject.Controllers
         }
 
         // DELETE: api/ServicesTickets/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteServicesTicket(int id)
+        [HttpPost("delete")]
+        public async Task<IActionResult> DeleteServicesTicket([FromBody] int id)
         {
             if (_context.ServicesTickets == null)
             {
